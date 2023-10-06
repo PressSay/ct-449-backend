@@ -24,13 +24,14 @@ class ContactService {
     }
 
     async create(payload) {
+        console.log(payload);
         const contact = this.extractConactData(payload);
         const result = await this.Contact.findOneAndUpdate(
             contact,
-            { $set: { favorite: contact.favorite == true } },
+            { $set: { favorite: contact.favorite === true } },
             { returnDocument: "after", upsert: true }
         );
-        return result.value;
+        return result;
     }
 
     async find(filter) {
@@ -60,7 +61,7 @@ class ContactService {
             { $set: update },
             { returnDocument: "after" }
         );
-        return result.value;
+        return result;
     }
 
     async delete(id) {
