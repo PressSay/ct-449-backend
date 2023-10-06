@@ -1,20 +1,20 @@
 "user-strict";
 
 const express = require("express");
-const contacts = requrie("../controllers/contact.controller");
+const contacts = require("../controllers/contact.controller");
 
 const router = express.Router();
 
 router.route("/")
-    .get(contact.findAll)
+    .get(contacts.findAll)
     .post(contacts.create)
     .delete(contacts.deleteAll);
 
 router.route("/favorite")
-    .get(contact.findAllFavorite);
+    .get(contacts.findAllFavorite);
 
 router.route("/:id")
-    .get(contact.findOne)
+    .get(contacts.findOne)
     .post(contacts.update)
     .delete(contacts.delete);
 
